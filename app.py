@@ -10,7 +10,7 @@ import dash
 app = Dash(__name__,
            external_stylesheets=[dbc.themes.BOOTSTRAP],
            use_pages=True)
-
+app.title='stock-prices-analysis'
 server = app.server
 
 # Navigation bar
@@ -37,6 +37,6 @@ app.layout = html.Div([
     ])
 ])  
 
-# Run
+# Run the app
 if __name__ == '__main__':
     app.run_server(debug=True, port=8052)
