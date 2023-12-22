@@ -1,0 +1,11 @@
+dash==2.9.3
+dash-bootstrap-components
+numpy
+pandas
+plotly
+datetime
+matplotlib
+nltk
+yfinance
+openpyxl>=3.0.0,<4.0.0
+gunicorn
