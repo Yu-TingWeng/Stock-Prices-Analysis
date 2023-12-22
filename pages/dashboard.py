@@ -96,8 +96,19 @@ layout = html.Div([
             dbc.Col(dcc.Graph(id='line_plot')),
         ]),
 
-        html.Div(id='data-table'),
-        html.Div(id='stat-table'),
+        html.H5(children='BUY & SELL Date matched with Strategy'),
+        html.Div(dash_table.DataTable(id='data-table', 
+                                      page_size=10, 
+                                      page_action='native', 
+                                      style_cell={'textAlign': 'left'}, 
+                                      style_data={'whiteSpace': 'normal', 'height': 'auto'}, 
+                                      style_table={'overflowX': 'auto'})),
+        
+        html.H5(children='Mean Profit & Return Rate of the Strategy'),
+        html.Div(dash_table.DataTable(id='stat-table', 
+                                      style_cell={'textAlign': 'left'},
+                                      style_data={'whiteSpace': 'normal', 'height': 'auto'},
+                                      style_table={'overflowX': 'auto'})),
         html.Br(),
         html.Br(),
     ]),
@@ -107,8 +118,8 @@ layout = html.Div([
 # CALLBACKS
 @callback(
     [Output('line_plot', 'figure'),
-     Output('data-table', 'children'),
-     Output('stat-table', 'children')],
+     Output('data-table', 'data'),
+     Output('stat-table', 'data')],
     [Input('stock_name', 'value'),
      Input('start_year', 'value'),
      Input('n_day', 'value'),
@@ -142,34 +153,13 @@ def update_output(selected_stock, selected_year, selected_n_day, selected_strate
         strategy_profit, strategy_stat = stock.strategy3_profit_statistics(df_filtered, 'Average Signal', 'now_avg_compare')
 
     # Create DataTable components for data and statistics
-    data_table = dash_table.DataTable(
-        id='data-table',
-        columns=[{'name': col, 'id': col} for col in strategy_profit.columns],
-        data =strategy_profit.to_dict('records'),
-        page_current=0,
-        page_size=5,
-        page_action='native',
-        style_cell={'textAlign': 'left'},
-        style_data={'whiteSpace': 'normal', 'height': 'auto'},
-        style_table={'overflowX': 'auto'}
-    )
-
-    stat_table = dash_table.DataTable(
-        id='stat-table',
-        columns=[{'name': col, 'id': col} for col in strategy_stat.columns],
-        data= strategy_stat.to_dict('records'),
-        page_current=0,
-        page_size=5,
-        page_action='native',
-        style_cell={'textAlign': 'left'},
-        style_data={'whiteSpace': 'normal', 'height': 'auto'},
-        style_table={'overflowX': 'auto'}
-    )
+    data_table = strategy_profit.to_dict('records')
+    stat_table = strategy_stat.to_dict('records')
     
     fig = px.line(df_filtered, x='Date', y='Close', title=f'{selected_stock} Stock Price')
     fig.add_trace(go.Scatter(x=df_filtered['Date'], y=df_filtered['Average'], mode='lines', name='Average Price'))
     
-    return fig, data_table, stat_table 
+    return fig, data_table, stat_table
 
 
 # https://dash-bootstrap-components.opensource.faculty.ai/examples/iris/

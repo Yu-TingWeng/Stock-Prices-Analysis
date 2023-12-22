@@ -123,20 +123,20 @@ def strategy1_profit_statistics(df, current_avg_column):
             nearest_pairs.append((pair_0_to_1, nearest_1_to_0))
 
     # Create a DataFrame from the list of nearest pairs
-    strategy1_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate'])
+    strategy1_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate (%)'])
 
     
     # Calculate and return mean and standard deviation of profit
     mean_profit = strategy1_profit_df["Profit"].mean()
     std_profit = strategy1_profit_df["Profit"].std()
-    mean_return = strategy1_profit_df["Return Rate"].mean()
-    std_return = strategy1_profit_df["Return Rate"].std()
+    mean_return = strategy1_profit_df["Return Rate (%)"].mean()
+    std_return = strategy1_profit_df["Return Rate (%)"].std()
     strategy1_stat_dict = {
         'Strategy': ['Strategy 1'],
         'Mean Profit': [mean_profit],
         'Std Dev Profit': [std_profit],
-        'Mean Return': [mean_return],
-        'Std Dev Return': [std_return]
+        'Mean Return (%)': [mean_return],
+        'Std Dev Return (%)': [std_return]
         }
 
     # Create the strategy1_stat_df DataFrame from the dictionary
@@ -193,19 +193,19 @@ def strategy2_profit_statistics(df, avg_change_column, current_avg_column):
             nearest_pairs.append((pair_0_to_1, nearest_1_to_0))
 
     # Create a DataFrame from the list of nearest pairs
-    strategy2_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate'])
+    strategy2_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate (%)'])
 
     # Calculate and return mean and standard deviation of profit
     mean_profit = strategy2_profit_df["Profit"].mean()
     std_profit = strategy2_profit_df["Profit"].std()
-    mean_return = strategy2_profit_df["Return Rate"].mean()
-    std_return = strategy2_profit_df["Return Rate"].std()
+    mean_return = strategy2_profit_df["Return Rate (%)"].mean()
+    std_return = strategy2_profit_df["Return Rate (%)"].std()
     strategy2_stat_dict = {
         'Strategy': ['Strategy 2'],
         'Mean Profit': [mean_profit],
         'Std Dev Profit': [std_profit],
-        'Mean Return': [mean_return],
-        'Std Dev Return': [std_return]
+        'Mean Return (%)': [mean_return],
+        'Std Dev Return (%)': [std_return]
         }
 
     # Create the strategy1_stat_df DataFrame from the dictionary
@@ -262,19 +262,19 @@ def strategy3_profit_statistics(df, avg_change_column, current_avg_column):
             nearest_pairs.append((pair_0_to_1, nearest_1_to_0))
 
     # Create a DataFrame from the list of nearest pairs
-    strategy3_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate'])
+    strategy3_profit_df = pd.DataFrame([(pair[0]['Date'], pair[1]['Date'], pair[1]['Close'] - pair[0]['Close'], (pair[1]['Close'] - pair[0]['Close']) / pair[0]['Close']) for pair in nearest_pairs], columns=['BUY Date', 'SELL Date', 'Profit', 'Return Rate (%)'])
 
     # Calculate and return mean and standard deviation of profit
     mean_profit = strategy3_profit_df["Profit"].mean()
     std_profit = strategy3_profit_df["Profit"].std()
-    mean_return = strategy3_profit_df["Return Rate"].mean()
-    std_return = strategy3_profit_df["Return Rate"].std()
+    mean_return = strategy3_profit_df["Return Rate (%)"].mean()
+    std_return = strategy3_profit_df["Return Rate (%)"].std()
     strategy3_stat_dict = {
         'Strategy': ['Strategy 3'],
         'Mean Profit': [mean_profit],
         'Std Dev Profit': [std_profit],
-        'Mean Return': [mean_return],
-        'Std Dev Return': [std_return]
+        'Mean Return (%)': [mean_return],
+        'Std Dev Return (%)': [std_return]
         }
 
     # Create the strategy1_stat_df DataFrame from the dictionary
