@@ -8,9 +8,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
-import os
-import sys
-sys.path.append(r"C:\Users\user\Documents\GitHub\Stock-Prices-Analysis")
+# import os
+# import sys
+# sys.path.append(r"C:\Users\user\Documents\GitHub\Stock-Prices-Analysis")
 import analyze_stock_prices as stock
 
 dash.register_page(__name__, path='/')

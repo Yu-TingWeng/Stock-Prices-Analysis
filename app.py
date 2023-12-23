@@ -10,7 +10,6 @@ import dash
 app = Dash(__name__,
            external_stylesheets=[dbc.themes.BOOTSTRAP],
            use_pages=True)
-app.title='stock-prices-analysis'
 server = app.server
 
 # Navigation bar
@@ -27,7 +26,7 @@ navbar = dbc.NavbarSimple(
 app.layout = html.Div([
     dbc.Container([
         html.H1(children='Stock Prices Analysis with Average Price Line', style={'font-weight': 'bold'}),
-        html.H5(children='Are there an Optimal Investment Strategy?'),
+        html.H5(children='Is there an Optimal Investment Strategy?'),
         html.H5(children='Author: Yuting Weng'),
         html.Br(),
         # Navigation bar
@@ -39,4 +38,4 @@ app.layout = html.Div([
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8052)
+    app.run(debug=True, port=8052)
